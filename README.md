@@ -1,6 +1,9 @@
 # One Solution
 
-Turn a shape into a puzzle that fits together **exactly one way**.
+**[commodorebeard.github.io/one-solution](https://commodorebeard.github.io/one-solution/)**
+
+A packing puzzle with fourteen solutions is not a puzzle. This one has
+**exactly one**, and the count is proved rather than asserted.
 
 You pick or draw an outline. The app cuts it into pieces, then proves that
 those pieces repack that outline in exactly one arrangement — and shows you the
@@ -31,6 +34,16 @@ bun run lint       # eslint, no `any`
 bun run typecheck  # tsc --noEmit, strict
 bun run test       # vitest, including the known-answer solver tests
 ```
+
+### Deployment
+
+`.github/workflows/deploy.yml` publishes to GitHub Pages on every push to
+`main`. It calls `ci.yml` as a reusable workflow first, so nothing is published
+from a commit the gate would have rejected. See
+`docs/adr/0004-pages-deploy-behind-the-gate.md`.
+
+The page is entirely self-contained: no analytics, no CDN, no fonts fetched
+from anywhere, and no request of any kind once it has loaded.
 
 ## Layout
 

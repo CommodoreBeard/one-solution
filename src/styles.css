@@ -57,12 +57,19 @@ body {
 #app {
   max-width: 62rem;
   margin: 0 auto;
+}
+
+/* The `main` landmark is the grid, not a row inside one: `#app` holds the
+   masthead and `main`, and `main` holds the sections that need the gap. */
+#app,
+#app > main {
   display: grid;
   gap: clamp(1.5rem, 4vw, 2.5rem);
 }
 
 h1,
-h2 {
+h2,
+h3 {
   line-height: 1.2;
   margin: 0 0 0.5rem;
 }
@@ -74,6 +81,10 @@ h1 {
 
 h2 {
   font-size: 1.25rem;
+}
+
+h3 {
+  font-size: 1rem;
 }
 
 p {
@@ -302,6 +313,13 @@ label {
   margin: 0 auto 1rem;
 }
 
+/* `display: block` above out-specifies the browser's own `[hidden]` rule, so
+   without this the canvas keeps its square when the view hides it and a
+   visitor who has not made a puzzle yet scrolls past 500px of nothing. */
+.result__canvas[hidden] {
+  display: none;
+}
+
 .result__rejection {
   padding: 0.9rem;
   margin-bottom: 1rem;
@@ -433,4 +451,112 @@ label {
   min-width: 0;
   font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
   font-size: 0.85rem;
+}
+
+/* The claim, and the prior art (issue #8) --------------------------------- */
+
+.claim__lead {
+  max-width: 46rem;
+  font-size: 1.05rem;
+}
+
+.claim__clauses {
+  max-width: 46rem;
+  margin: 0 0 0.75rem;
+  padding-left: 1.2rem;
+  color: var(--ink-soft);
+}
+
+.claim__clauses li {
+  margin-bottom: 0.4rem;
+}
+
+.claim__method {
+  max-width: 46rem;
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.prior-art__lead {
+  max-width: 46rem;
+  color: var(--ink-soft);
+}
+
+/* A narrow screen scrolls the table, never the page. */
+.prior-art__scroll {
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.prior-art__table {
+  width: 100%;
+  min-width: 34rem;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.prior-art__table caption {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--ink-soft);
+  border-bottom: 1px solid var(--line);
+}
+
+.prior-art__table th,
+.prior-art__table td {
+  padding: 0.6rem 0.75rem;
+  text-align: left;
+  vertical-align: top;
+  border-top: 1px solid var(--line);
+}
+
+.prior-art__table thead th {
+  border-top: none;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+.prior-art__table tbody th {
+  white-space: nowrap;
+}
+
+/* Left to itself the browser sizes these columns by content, which gives the
+   longest cell the most room and squeezes the shortest one into a ribbon. */
+.prior-art__table th:nth-child(1) {
+  width: 20%;
+}
+
+.prior-art__table th:nth-child(2) {
+  width: 34%;
+}
+
+.prior-art__table th:nth-child(3) {
+  width: 46%;
+}
+
+.prior-art__table td {
+  color: var(--ink-soft);
+}
+
+.prior-art__columns {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--gap);
+  margin-top: 1.25rem;
+}
+
+.prior-art__column ul {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.prior-art__column li {
+  margin-bottom: 0.4rem;
 }
