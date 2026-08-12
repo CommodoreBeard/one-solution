@@ -1,0 +1,53 @@
+seed=777 trials=60 solution cap=60
+(unique = exactly one solution, counting piece flips, up to the target's symmetry)
+
+dog            cells= 44 k= 4 |G|=2 | unique  58/ 60 ( 96.7%) | capped(>=60)   0 | median solns    1 | mean  0.002s max  0.004s | 1st unique at try 1 | had dup pieces 1
+dog            cells= 44 k= 5 |G|=2 | unique  55/ 60 ( 91.7%) | capped(>=60)   0 | median solns    1 | mean  0.002s max  0.006s | 1st unique at try 1 | had dup pieces 4
+dog            cells= 44 k= 6 |G|=2 | unique  42/ 60 ( 70.0%) | capped(>=60)   0 | median solns    1 | mean  0.003s max  0.009s | 1st unique at try 1 | had dup pieces 8
+dog            cells= 44 k= 7 |G|=2 | unique  22/ 60 ( 36.7%) | capped(>=60)   0 | median solns    2 | mean  0.007s max  0.023s | 1st unique at try 4 | had dup pieces 21
+dog            cells= 44 k= 8 |G|=2 | unique   2/ 60 (  3.3%) | capped(>=60)  10 | median solns    8 | mean  0.051s max  0.241s | 1st unique at try 35 | had dup pieces 33
+dog            cells= 44 k= 9 |G|=2 | unique   0/ 60 (  0.0%) | capped(>=60)  45 | median solns   12 | mean  0.144s max  0.623s | 1st unique at try - | had dup pieces 51
+
+initials_JH    cells= 30 k= 4 |G|=1 | unique  23/ 60 ( 38.3%) | capped(>=60)   0 | median solns    2 | mean  0.001s max  0.001s | 1st unique at try 3 | had dup pieces 19
+initials_JH    cells= 30 k= 5 |G|=1 | unique  10/ 60 ( 16.7%) | capped(>=60)   0 | median solns    2 | mean  0.001s max  0.001s | 1st unique at try 5 | had dup pieces 27
+initials_JH    cells= 30 k= 6 |G|=1 | unique   1/ 60 (  1.7%) | capped(>=60)   0 | median solns    4 | mean  0.001s max  0.005s | 1st unique at try 28 | had dup pieces 43
+initials_JH    cells= 30 k= 7 |G|=1 | unique   1/ 60 (  1.7%) | capped(>=60)   0 | median solns    7 | mean  0.001s max  0.002s | 1st unique at try 43 | had dup pieces 52
+initials_JH    cells= 30 k= 8 |G|=1 | unique   0/ 60 (  0.0%) | capped(>=60)   8 | median solns   20 | mean  0.001s max  0.003s | 1st unique at try - | had dup pieces 59
+initials_JH    cells= 30 k= 9 |G|=1 | unique   0/ 60 (  0.0%) | capped(>=60)  37 | median solns   26 | mean  0.002s max  0.006s | 1st unique at try - | had dup pieces 60
+
+heart          cells= 32 k= 4 |G|=2 | unique  43/ 60 ( 71.7%) | capped(>=60)   0 | median solns    1 | mean  0.001s max  0.002s | 1st unique at try 1 | had dup pieces 2
+heart          cells= 32 k= 5 |G|=2 | unique  28/ 60 ( 46.7%) | capped(>=60)   0 | median solns    2 | mean  0.002s max  0.005s | 1st unique at try 1 | had dup pieces 9
+heart          cells= 32 k= 6 |G|=2 | unique   8/ 60 ( 13.3%) | capped(>=60)   4 | median solns    4 | mean  0.004s max  0.008s | 1st unique at try 7 | had dup pieces 26
+heart          cells= 32 k= 7 |G|=2 | unique   0/ 60 (  0.0%) | capped(>=60)  32 | median solns   13 | mean  0.009s max  0.031s | 1st unique at try - | had dup pieces 46
+heart          cells= 32 k= 8 |G|=2 | unique   0/ 60 (  0.0%) | capped(>=60)  54 | median solns   17 | mean  0.012s max  0.065s | 1st unique at try - | had dup pieces 53
+heart          cells= 32 k= 9 |G|=2 | unique   0/ 60 (  0.0%) | capped(>=60)  60 | median solns    - | mean  0.006s max  0.030s | 1st unique at try - | had dup pieces 58
+
+blob           cells= 48 k= 4 |G|=1 | unique  58/ 60 ( 96.7%) | capped(>=60)   0 | median solns    1 | mean  0.002s max  0.006s | 1st unique at try 1 | had dup pieces 0
+blob           cells= 48 k= 5 |G|=1 | unique  53/ 60 ( 88.3%) | capped(>=60)   0 | median solns    1 | mean  0.003s max  0.008s | 1st unique at try 1 | had dup pieces 1
+blob           cells= 48 k= 6 |G|=1 | unique  51/ 60 ( 85.0%) | capped(>=60)   0 | median solns    1 | mean  0.004s max  0.009s | 1st unique at try 1 | had dup pieces 4
+blob           cells= 48 k= 7 |G|=1 | unique  32/ 60 ( 53.3%) | capped(>=60)   0 | median solns    1 | mean  0.013s max  0.032s | 1st unique at try 3 | had dup pieces 14
+blob           cells= 48 k= 8 |G|=1 | unique   8/ 60 ( 13.3%) | capped(>=60)   3 | median solns    6 | mean  0.079s max  0.180s | 1st unique at try 10 | had dup pieces 21
+blob           cells= 48 k= 9 |G|=1 | unique   0/ 60 (  0.0%) | capped(>=60)  42 | median solns   23 | mean  0.200s max  0.636s | 1st unique at try - | had dup pieces 41
+
+cat            cells= 34 k= 4 |G|=2 | unique  55/ 60 ( 91.7%) | capped(>=60)   0 | median solns    1 | mean  0.001s max  0.008s | 1st unique at try 1 | had dup pieces 3
+cat            cells= 34 k= 5 |G|=2 | unique  44/ 60 ( 73.3%) | capped(>=60)   0 | median solns    1 | mean  0.002s max  0.004s | 1st unique at try 1 | had dup pieces 4
+cat            cells= 34 k= 6 |G|=2 | unique  25/ 60 ( 41.7%) | capped(>=60)   0 | median solns    2 | mean  0.003s max  0.007s | 1st unique at try 1 | had dup pieces 17
+cat            cells= 34 k= 7 |G|=2 | unique   7/ 60 ( 11.7%) | capped(>=60)   4 | median solns    6 | mean  0.010s max  0.025s | 1st unique at try 2 | had dup pieces 29
+cat            cells= 34 k= 8 |G|=2 | unique   2/ 60 (  3.3%) | capped(>=60)  40 | median solns    9 | mean  0.026s max  0.087s | 1st unique at try 37 | had dup pieces 50
+cat            cells= 34 k= 9 |G|=2 | unique   0/ 60 (  0.0%) | capped(>=60)  57 | median solns    8 | mean  0.025s max  0.191s | 1st unique at try - | had dup pieces 57
+
+rect_6x8       cells= 48 k= 4 |G|=4 | unique  54/ 60 ( 90.0%) | capped(>=60)   0 | median solns    1 | mean  0.002s max  0.006s | 1st unique at try 2 | had dup pieces 0
+rect_6x8       cells= 48 k= 5 |G|=4 | unique  49/ 60 ( 81.7%) | capped(>=60)   0 | median solns    1 | mean  0.003s max  0.009s | 1st unique at try 1 | had dup pieces 2
+rect_6x8       cells= 48 k= 6 |G|=4 | unique  26/ 60 ( 43.3%) | capped(>=60)   2 | median solns    2 | mean  0.007s max  0.020s | 1st unique at try 1 | had dup pieces 8
+rect_6x8       cells= 48 k= 7 |G|=4 | unique  15/ 60 ( 25.0%) | capped(>=60)  12 | median solns    2 | mean  0.027s max  0.117s | 1st unique at try 6 | had dup pieces 19
+rect_6x8       cells= 48 k= 8 |G|=4 | unique   2/ 60 (  3.3%) | capped(>=60)  43 | median solns    4 | mean  0.080s max  0.309s | 1st unique at try 14 | had dup pieces 33
+rect_6x8       cells= 48 k= 9 |G|=4 | unique   0/ 60 (  0.0%) | capped(>=60)  60 | median solns    - | mean  0.127s max  0.814s | 1st unique at try - | had dup pieces 42
+
+square_7x7     cells= 49 k= 4 |G|=8 | unique  57/ 60 ( 95.0%) | capped(>=60)   0 | median solns    1 | mean  0.002s max  0.006s | 1st unique at try 1 | had dup pieces 2
+square_7x7     cells= 49 k= 5 |G|=8 | unique  46/ 60 ( 76.7%) | capped(>=60)   2 | median solns    1 | mean  0.003s max  0.009s | 1st unique at try 1 | had dup pieces 1
+square_7x7     cells= 49 k= 6 |G|=8 | unique  33/ 60 ( 55.0%) | capped(>=60)   2 | median solns    1 | mean  0.006s max  0.014s | 1st unique at try 2 | had dup pieces 4
+square_7x7     cells= 49 k= 7 |G|=8 | unique  17/ 60 ( 28.3%) | capped(>=60)  14 | median solns    2 | mean  0.017s max  0.048s | 1st unique at try 4 | had dup pieces 10
+square_7x7     cells= 49 k= 8 |G|=8 | unique   4/ 60 (  6.7%) | capped(>=60)  38 | median solns    4 | mean  0.054s max  0.164s | 1st unique at try 9 | had dup pieces 28
+square_7x7     cells= 49 k= 9 |G|=8 | unique   0/ 60 (  0.0%) | capped(>=60)  59 | median solns    7 | mean  0.043s max  0.244s | 1st unique at try - | had dup pieces 44
+
+OVERALL: 931/2520 random dissections unique (36.9%), 59.3s of search total
