@@ -19,8 +19,9 @@
  *
  * Generation is synchronous. The engine's budget bounds it at about two
  * seconds worst case and the usual case is a few milliseconds, so a puzzle is
- * built on every commit rather than behind a button. Issue #7 replaces the
- * instant swap with the search animation, replaying `document.rejected`.
+ * built on every commit rather than behind a button. The search animation
+ * (`search-animation.ts`) replays `document.rejected` *after* the fact — it is
+ * a view of a finished result, so nothing on this page waits for it.
  */
 
 import { buildPuzzle } from '@/lib/build-puzzle';
