@@ -1,0 +1,369 @@
+/*
+ * One stylesheet, tokens first.
+ *
+ * Both colour schemes are first-class: the palette is defined once as custom
+ * properties and redefined under `prefers-color-scheme: dark`, so no rule below
+ * ever names a literal colour. `color-scheme` is declared too, which is what
+ * makes form controls, scrollbars and focus rings follow the page rather than
+ * staying stubbornly light.
+ *
+ * Touch targets are 44px minimum, which is the reason for the min-height on
+ * every button and the height on the range inputs.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  --ink: #12161f;
+  --ink-soft: #4a556b;
+  --paper: #f7f8fb;
+  --panel: #ffffff;
+  --line: #d3d8e4;
+  --accent: #2f6fd0;
+  --accent-ink: #ffffff;
+  --warn-panel: #fff4e5;
+  --warn-line: #e0a458;
+
+  --radius: 10px;
+  --gap: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #f2f4f9;
+    --ink-soft: #a8b2c7;
+    --paper: #10141c;
+    --panel: #171d28;
+    --line: #303a4d;
+    --accent: #7fb2ff;
+    --accent-ink: #0b1018;
+    --warn-panel: #2b2113;
+    --warn-line: #b8802f;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: clamp(1rem, 3vw, 2.5rem);
+  background: var(--paper);
+  color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+
+#app {
+  max-width: 62rem;
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+h1,
+h2 {
+  line-height: 1.2;
+  margin: 0 0 0.5rem;
+}
+
+h1 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.25rem;
+}
+
+p {
+  margin: 0 0 0.75rem;
+}
+
+.masthead__lead {
+  max-width: 46rem;
+  color: var(--ink-soft);
+}
+
+section {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1rem, 3vw, 1.5rem);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Buttons and fields ----------------------------------------------------- */
+
+.button {
+  min-height: 44px;
+  padding: 0.6rem 1.1rem;
+  font: inherit;
+  font-weight: 600;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.button:hover:not(:disabled) {
+  border-color: var(--accent);
+}
+
+.button--primary {
+  background: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+input[type='range'] {
+  flex: 1 1 12rem;
+  height: 44px;
+  accent-color: var(--accent);
+}
+
+select,
+.share__input {
+  min-height: 44px;
+  padding: 0.5rem 0.6rem;
+  font: inherit;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+label {
+  font-weight: 600;
+}
+
+/* Gallery ---------------------------------------------------------------- */
+
+.gallery__lead {
+  color: var(--ink-soft);
+  max-width: 46rem;
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: var(--gap);
+}
+
+.gallery__tile {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.75rem;
+  min-height: 44px;
+  text-align: center;
+  font: inherit;
+  color: var(--ink);
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.gallery__tile:hover,
+.gallery__tile:focus-visible {
+  border-color: var(--accent);
+}
+
+.gallery__thumb {
+  width: 100%;
+  aspect-ratio: 1;
+  fill: var(--accent);
+  shape-rendering: crispedges;
+}
+
+.gallery__name {
+  font-weight: 700;
+}
+
+.gallery__description {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+/* Editor ----------------------------------------------------------------- */
+
+.editor__lead {
+  color: var(--ink-soft);
+  max-width: 46rem;
+}
+
+.editor__panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--gap);
+  margin-top: var(--gap);
+}
+
+@media (min-width: 48rem) {
+  .editor__panel {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.grid-editor__canvas {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  /* Without this a drag on a phone scrolls the page instead of drawing. */
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.grid-editor__status {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  min-height: 1.5em;
+}
+
+/* Controls --------------------------------------------------------------- */
+
+.controls {
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.control + .control {
+  margin-top: 0.75rem;
+}
+
+.control__row {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.control__value {
+  min-width: 5rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+}
+
+.control__hint {
+  margin: 0.15rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.controls__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+/* Result ----------------------------------------------------------------- */
+
+.result__headline {
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
+.result__detail {
+  color: var(--ink-soft);
+}
+
+.result__canvas {
+  display: block;
+  width: 100%;
+  max-width: 34rem;
+  aspect-ratio: 1;
+  margin: 0 auto 1rem;
+}
+
+.result__rejection {
+  padding: 0.9rem;
+  margin-bottom: 1rem;
+  background: var(--warn-panel);
+  border: 1px solid var(--warn-line);
+  border-radius: var(--radius);
+}
+
+.result__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 0.5rem 1rem;
+  margin: 0;
+}
+
+.result__stat {
+  min-width: 0;
+}
+
+.result__stats dt {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink-soft);
+}
+
+.result__stats dd {
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Downloads and sharing --------------------------------------------------- */
+
+.download__options {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: var(--gap);
+}
+
+.download__status {
+  margin-top: 0.75rem;
+  color: var(--ink-soft);
+}
+
+.download__caveat {
+  margin: 0.5rem 0 0;
+  padding: 0.9rem;
+  background: var(--warn-panel);
+  border: 1px solid var(--warn-line);
+  border-radius: var(--radius);
+}
+
+.share__row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.share__input {
+  flex: 1 1 18rem;
+  min-width: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 0.85rem;
+}

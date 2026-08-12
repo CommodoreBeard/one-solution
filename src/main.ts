@@ -1,11 +1,8 @@
 /**
- * Mount point. The UI is built in issue #6; this keeps the build honest until
- * then by proving the bundle, the alias and the type-check all work.
+ * Mount point. Everything else is `src/components/app.ts`.
  */
-import { DEFAULT_PIECE_COUNT, MAX_PIECES } from '@/lib/envelope';
+import './styles.css';
+import { mountApp } from '@/components/app';
 
-const app = document.querySelector<HTMLDivElement>('#app');
-
-if (app) {
-  app.textContent = `One Solution — engine not yet wired up (default ${DEFAULT_PIECE_COUNT} pieces, max ${MAX_PIECES}).`;
-}
+const root = document.querySelector<HTMLDivElement>('#app');
+if (root !== null) mountApp(root);
