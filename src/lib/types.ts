@@ -38,14 +38,31 @@ export interface PuzzleSpec {
   readonly cellSizeMm: number;
 }
 
-/** Why the engine declined to produce a puzzle. Always actionable. */
+/**
+ * Why the engine declined to produce a puzzle. Always actionable.
+ *
+ * The first six are decisions about a puzzle. The last three are decisions
+ * about the *link*: seam 1 takes an encoded string straight from the URL bar,
+ * so "this is not a puzzle at all" and "this is a newer format than I read" are
+ * outcomes it has to be able to state, rather than throw.
+ */
 export type RejectionReason =
   | 'no-unique-dissection-at-k'
   | 'shape-too-thin'
   | 'shape-too-small'
   | 'shape-disconnected'
   | 'piece-count-out-of-range'
-  | 'budget-exhausted';
+  | 'budget-exhausted'
+  /** The state string is damaged, truncated or not a puzzle. */
+  | 'malformed-state'
+  /** The state string is a format this build does not read. */
+  | 'unsupported-version'
+  /**
+   * The independent re-count disagreed with the search. Never expected: this
+   * is the engine catching itself, and it refuses rather than ship a
+   * guarantee it could not confirm.
+   */
+  | 'verification-failed';
 
 export interface Rejection {
   readonly ok: false;
