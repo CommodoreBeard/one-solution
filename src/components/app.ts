@@ -48,15 +48,19 @@ import { createDownloadPanel } from './download-panel';
 import { el } from './dom';
 import { createGallery } from './gallery';
 import { createGridEditor } from './grid-editor';
+import { createPriorArt } from './prior-art';
 import { createResultView } from './result-view';
+import { createUniquenessPanel } from './uniqueness-panel';
 
 function header(): HTMLElement {
   return el('header', { class: 'masthead' }, [
     el('h1', {}, ['One Solution']),
     el('p', { class: 'masthead__lead' }, [
-      'Cut a shape into pieces that fit back together in exactly one way — ' +
-        'and print the cut files. The uniqueness is proved, not asserted: every ' +
-        'puzzle is re-counted from scratch before it is offered.',
+      'A packing puzzle with fourteen solutions is not a puzzle. This one has ' +
+        'exactly one, and the count is proved rather than asserted: watch the ' +
+        'search reject candidate dissections — 4 solutions, 12, 2 — until one ' +
+        'lands on 1. Then print the cut files and make it out of card, free, ' +
+        'in your browser, with nothing sent anywhere.',
     ]),
   ]);
 }
@@ -189,13 +193,21 @@ export function mountApp(root: HTMLElement): void {
     editorPanel,
   ]);
 
+  // One `main` landmark around everything the page is for, so that "skip to
+  // content" and screen-reader landmark navigation both have somewhere to go.
+  // The two closing sections are copy, not controls: the guarantee stated in
+  // plain words, and the prior art named before anyone else names it.
   root.replaceChildren(
     header(),
-    gallery,
-    editorSection,
-    resultView.element,
-    downloads.element,
-    share.element,
+    el('main', {}, [
+      gallery,
+      editorSection,
+      resultView.element,
+      downloads.element,
+      share.element,
+      createUniquenessPanel(),
+      createPriorArt(),
+    ]),
   );
 
   /** Adopt a state, publish it to the URL, and rebuild the puzzle from that. */

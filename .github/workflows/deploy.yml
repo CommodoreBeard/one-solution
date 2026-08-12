@@ -1,0 +1,75 @@
+# Publish the app to GitHub Pages, but only from a commit that passed the gate.
+#
+# `gate` is `ci.yml` itself, called rather than copied: there is one definition
+# of "the four commands passed" in this repo and a second copy would drift from
+# it silently. Nothing downstream of `gate` runs unless it succeeds, so `main`
+# can never be published in a state the gate would have rejected.
+#
+# The site is rebuilt in `build` rather than carried out of the gate, because
+# uploading a Pages artifact from a workflow that also runs on every pull
+# request would mean every PR uploaded a deployment candidate. `vite.config.ts`
+# sets `base: './'`, so the same `dist/` works at a project-page path.
+name: Deploy
+
+on:
+  push:
+    branches: [main]
+  # For re-publishing without an empty commit — after enabling Pages, say.
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  # One deployment at a time, and never cancel one half-done: an interrupted
+  # Pages deployment leaves the live site on the previous commit at best.
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    name: Gate
+    uses: ./.github/workflows/ci.yml
+
+  build:
+    name: Build site
+    needs: gate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Build
+        run: bun run build
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    name: Deploy to Pages
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      # `pages: write` and `id-token: write` are what `deploy-pages` needs to
+      # claim the deployment; they are scoped to this job so the gate and the
+      # build keep read-only tokens.
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

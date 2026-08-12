@@ -2,8 +2,11 @@ name: CI
 
 on:
   pull_request:
-  push:
-    branches: [main]
+  # Not `push: main`. On `main` the gate is run by `deploy.yml`, which calls
+  # this workflow and only publishes if it passes — so a push to `main` still
+  # runs the full gate exactly once, and the thing that gets deployed is the
+  # thing that passed.
+  workflow_call:
 
 permissions:
   contents: read
