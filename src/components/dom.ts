@@ -69,3 +69,12 @@ export function prefersDark(): boolean {
 export function onSchemeChange(redraw: () => void): void {
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redraw);
 }
+
+/**
+ * True when the visitor has asked for reduced motion. Read at the moment the
+ * animation would start rather than cached, because the preference can change
+ * under a page that is already open.
+ */
+export function prefersReducedMotion(): boolean {
+  return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+}

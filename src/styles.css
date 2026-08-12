@@ -310,6 +310,73 @@ label {
   border-radius: var(--radius);
 }
 
+/* The search animation (issue #7) ----------------------------------------- */
+
+.search {
+  max-width: 34rem;
+  margin: -0.5rem auto 1rem;
+}
+
+.search__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.search__stamp {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  /* The count changes every few frames. Without a fixed box the caption under
+     it jumps as the digits change width. */
+  min-height: 1.6em;
+}
+
+.search__stamp[data-kind='candidate'] {
+  color: var(--warn-line);
+}
+
+.search__stamp[data-kind='solution'] {
+  color: var(--accent);
+}
+
+.search__caption,
+.search__note {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.search__caption {
+  min-height: 1.4em;
+}
+
+.button--quiet {
+  padding: 0.3rem 0.7rem;
+  font-size: 0.85rem;
+  flex: none;
+}
+
+/* The proof panel fills in when the search lands. A fade is a settle, not a
+   strobe — and it is off entirely for reduced motion. */
+.result__stats {
+  animation: settle 240ms ease-out;
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .result__stats {
+    animation: none;
+  }
+}
+
 .result__stats {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
