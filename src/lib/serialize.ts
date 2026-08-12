@@ -16,7 +16,7 @@
  * Why three formats, so none is mistaken for gold-plating: PDF is the reference
  * output for printing on card; SVG is for craft cutters and carries explicit
  * real-world units; DXF exists because the basic edition of Silhouette Studio
- * cannot open SVG at all. See docs/adr/0002-hand-rolled-export-writers.md.
+ * cannot open SVG at all. See docs/adr/0005-hand-rolled-export-writers.md.
  */
 
 import { writeDxf } from './dxf-writer';

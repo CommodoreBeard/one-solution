@@ -1,4 +1,4 @@
-# 0002 — Hand-rolled PDF, SVG and DXF writers over one sheet model
+# 0005 — Hand-rolled PDF, SVG and DXF writers over one sheet model
 
 - **Status** — accepted
 - **Date** — 2026-08-12
